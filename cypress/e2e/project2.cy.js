@@ -77,6 +77,11 @@ describe("project2", () => {
     })
 
     it.only("validates the invalid login with the wrong pw", () => {
+        loginPage.userLogin("TechGlobal", "1234")
+        cy.get("#error_message").should("have.text", "Invalid Password entered!")
+    })
+
+    it("validates the invalid login with the wrong pw", () => {
         loginPage.userLogin("John", "1234")
         cy.get("#error_message").should("have.text", "Invalid Username entered!")
     })
